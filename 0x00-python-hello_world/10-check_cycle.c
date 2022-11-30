@@ -7,23 +7,23 @@
  */
 int check_cycle(listint_t *list)
 {
-listint_t *j, *n;
+listint_t *jump, *node;
 
 if (!list || !list->next)
 return (0);
 
-n = list;
-j = list->next;
+node = list;
+jump = list->next;
 
-while (j && j->next && n && n->next)
+while (jump && jump->next && node && node->next)
 {
-if (j == n)
+if (jump == node)
 return (1);
-j = j->next->next;
-if (!j)
+jump = jump->next->next;
+if (!jump)
 
 break;
-n = n->next;
+node = node->next;
 }
 return (0);
 }
