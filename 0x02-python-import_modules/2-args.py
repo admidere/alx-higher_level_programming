@@ -6,7 +6,6 @@ if __name__ == "__main__":
     else "s",
     "." if len(sys.argv) - 1 == 0
     else ":"))
-
     i = 1
     while i <= len(sys.argv) - 1:
         print("{}: {}".format(i, sys.argv[i]))
