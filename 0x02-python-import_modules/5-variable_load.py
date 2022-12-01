@@ -1,4 +1,4 @@
 #!/usr/bin/python3
 if __name__ == "__main__":
-    import 5-variable_load
-    print("{}".format(5-variable_load.a))
+    import variable_load_5
+    print("{}".format(variable_load_5.a))
