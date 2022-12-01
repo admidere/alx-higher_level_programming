@@ -8,4 +8,3 @@ if __name__ == "__main__":
     while i <= len:
         print("{}: {}".format(i, sys.argv[i]))
         i += 1
-    print()
