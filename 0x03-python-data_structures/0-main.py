@@ -1,6 +1,8 @@
 #!/usr/bin/python3
-max_integer = __import__('9-max_integer').max_integer
+delete_at = __import__('11-delete_at').delete_at
 
-my_list = [1, 90, 2, 13, 34, 5, -13, 3]
-max_value = max_integer(my_list)
-print("Max: {}".format(max_value))
+my_list = [1, 2, 3, 4, 5]
+idx = 3
+new_list = delete_at(my_list, idx)
+print(new_list)
+print(my_list)
