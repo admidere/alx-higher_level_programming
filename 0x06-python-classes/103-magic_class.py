@@ -1,21 +1,29 @@
 #!/usr/bin/python3
-"""module Magic class"""
+"""MagicClass module.
+This module contains the MagicClass class used for the bytecode exercise.
+"""
+
+
 import math
 
 
-class MagicClass:
-    """Code derived from Python bytecode"""
+class MagicClass():
+    """Defines a MagicClass object."""
+
     def __init__(self, radius=0):
-        """Init for instance"""
+        """Sets the necessary attributes for the MagicClass object.
+        Args:
+            radius (int, float): the radius of the circle
+        """
         self.__radius = 0
         if type(radius) is not int and type(radius) is not float:
-            raise TypeError('radius must be a number')
+            raise TypeError("radius must be a number")
         self.__radius = radius
 
     def area(self):
-        """Area docstring"""
+        """Returns the current circle area."""
         return self.__radius ** 2 * math.pi
 
     def circumference(self):
-        """Circumference docstring"""
-        return 2 * math.pi * self.
+        """Returns the current circle circumference."""
+        return 2 * math.pi * self.__radius
