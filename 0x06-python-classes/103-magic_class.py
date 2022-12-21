@@ -1,12 +1,12 @@
 #!/usr/bin/python3
-"""module class"""
+"""module Magic class"""
 import math
 
 
 class MagicClass:
-    """class"""
+    """Code derived from Python bytecode"""
     def __init__(self, radius=0):
-        """Inititial ization"""
+        """Init for instance"""
         self.__radius = 0
         if type(radius) is not int and type(radius) is not float:
             raise TypeError('radius must be a number')
