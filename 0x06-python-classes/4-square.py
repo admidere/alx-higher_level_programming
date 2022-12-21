@@ -1,32 +1,24 @@
-#!/usr/bin/python3
-"""square module"""
-
-
 class Square:
-    """square class"""
+    """square with private instance attribute size"""
     def __init__(self, size=0):
-        """initailized for a givem parameter
-        or argument
-        and encapsulat the size to protect"""
-        self.__size = size
-
+        """Lenght of the side of a square"""
+        self.size = size
 
     @property
     def size(self):
-        """size of the square."""
-        return (self.__size)
-
+        """current size of the square."""
+        return self.__size
 
     @size.setter
     def size(self, value):
-        """setter give value for old argument"""
+        """setters are the methods"""
+
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
-        elif value < 0:
+        if value < 0:
             raise ValueError("size must be >= 0")
         self.__size = value
 
-
     def area(self):
-        """return new area"""
-        return (self.__size ** 2)
+        """public instance method returns current sqr area"""
+        return self.__size ** 2
