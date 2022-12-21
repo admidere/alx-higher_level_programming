@@ -26,6 +26,7 @@ class Square:
     def area(self):
         """public instance method returns current sqr area"""
         return self.__size ** 2
+
     def my_print(self):
         """prints the square to stdout with char #"""
         if self.__size == 0:
