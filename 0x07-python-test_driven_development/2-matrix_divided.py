@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 def matrix_divided(matrix, div):
-    if not isinstance(matrix, list):
+    if not isinstance(matrix, list) or len(matrix) == 0:
         raise TypeError("matrix must be a matrix (list of lists)"
                         "of integers/floats")
     for row in matrix:
-        if not isinstance(row , list):
+        if not isinstance(row , list) or len(row) == 0:
             raise TypeError("matrix must be a matrix (list of lists)"
                             "of integers/floats")
         if len(row) != len(matrix[0]):
@@ -25,3 +25,6 @@ def matrix_divided(matrix, div):
             matrix_row.append(round(matrix[row][col] / div, 2))
         new_matrix.append(matrix_row)
     return new_matrix
+if __name__ == "__main__":
+    import doctest
+    doctest.testfile("tests/2-matrix_divided.txt")

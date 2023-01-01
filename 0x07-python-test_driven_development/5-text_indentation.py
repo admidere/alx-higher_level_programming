@@ -12,3 +12,6 @@ def text_indentation(text):
             new_text = ""
     if letter not in sep:
         print(new_text.strip(" "), end="")
+if __name__ == "__main__":
+    import doctest
+    doctest.testfile("tests/5-text_indentation.txt")
