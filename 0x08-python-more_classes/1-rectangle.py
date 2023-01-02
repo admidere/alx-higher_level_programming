@@ -5,23 +5,11 @@
 class Rectangle:
     """class module"""
     def __init__(self, width=0, height=0):
+        """intiliaze for each argument"""
         self.height = height
         self.width = width
     
-    @property
-    def height(self):
-        """ return private height instance"""
-        return self.__height
-
-    @height.setter
-    def height(self, value):
-        """set height"""
-        if not isinstance(value, int):
-            raise TypeError("width must be an integer")
-        if value < 0:
-            raise ValueError("width must be >= 0")
-        self.__height = value
-
+    
     @property
     def width(self):
         return self.__width
@@ -34,3 +22,17 @@ class Rectangle:
         if value < 0:
             raise ValueError("width must be >= 0")
         self.__width = value
+
+    @property
+    def height(self):
+        """return private height instance"""
+        return self.__height
+
+    @height.setter
+    def height(self, value):
+        """set height"""
+        if not isinstance(value, int):
+            raise TypeError("width must be an integer")
+        if value < 0:
+            raise ValueError("width must be >= 0")
+        self.__height = value
