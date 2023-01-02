@@ -1,4 +1,5 @@
 The classmethod() is an inbuilt function in Python, which returns a class method for a given function.;
+Used to access or modify the class state. In method implementation, if we use only class variables, then such type of methods we should declare as a class method. The class method has a cls parameter which refers to the class.
 Syntax: classmethod(function)
 
 Parameter :This function accepts the function name as a parameter.
@@ -9,6 +10,8 @@ Class methods can be called by both class and object.
 These methods can be called with a class or with an object.
 
 static class
+
+It is a general utility method that performs a task in isolation. Inside this method, we don’t use instance or class variable because this static method doesn’t take any parameters like self and cls.
 
 In actuality, you define utility methods or group functions that have some logical relationships in a class using static methods.
 It is very similar to defining a regular function to define static methods inside of a class.
