@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """module"""
 
+
 def add_attribute(cla, attri, value):
     """Function that adds a new attribute to an object if it's possible"""
     if not(hasattr(cla, '__dict__')):
