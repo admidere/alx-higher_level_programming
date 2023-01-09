@@ -1,7 +1,12 @@
 #!/usr/bin/python3
-Square = __import__('11-square').Square
+MyList = __import__('1-my_list').MyList
 
-s = Square(13)
-
-print(s)
-print(s.area())
+my_list = MyList()
+my_list.append(1)
+my_list.append(4)
+my_list.append(2)
+my_list.append(3)
+my_list.append(5)
+print(my_list)
+my_list.print_sorted()
+print(my_list)
