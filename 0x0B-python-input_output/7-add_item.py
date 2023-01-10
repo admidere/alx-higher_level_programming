@@ -1,20 +1,20 @@
 #!/usr/bin/python3
-"""Module for a script that adds all arguments to a Python list"""
-from sys import argv
-if __name__ == "__main__":
-    load_from_json_file =\
-        __import__('6-load_from_json_file').load_from_json_file
-    save_to_json_file = __import__('5-save_to_json_file').save_to_json_file
+"""module for addng an item"""
+import json
+import os.path
+import sys
 
-    file_name = "add_item.json"
+save_to_json_file = __import__("5-save_to_json_file").save_to_json_file
 
-    # can also use os.path.exists(file) for try and except
-    # be sure to import os.path
-    try:
-        json_list = load_from_json_file(file_name)
-    except FileNotFoundError:
-        json_list = []
-    for item in argv[1:]:
-        json_list.append(item)
+load_from_json_file = __import__("6-load_from_json_file").load_from_json_file
 
-    save_to_json_file(json_list, file_name)
+my = "add_item.json"
+json = []
+
+if os.path.exists(my):
+    json = load_from_json_file(my)
+
+for arg in range(1, len(sys.argv)):
+    json.append(sys.argv[arg])
+
+save_to_json_file(json, my)
