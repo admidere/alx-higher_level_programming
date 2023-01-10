@@ -3,5 +3,9 @@
 
 
 def write_file(filename="", text=""):
+    """file open for write"""
     with open(filename, "w", encoding="utf-8") as fin:
-        return fin.write(text)
+        try:
+            return fin.write(text)
+        except:
+            return False
