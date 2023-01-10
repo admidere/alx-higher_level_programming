@@ -3,6 +3,7 @@
 
 
 def pascal_triangle(n):
+    """pascal triangle"""
     if n <= 0:
         return
     rows = [[1 for j in range(i + 1)] for i in range(n)]
