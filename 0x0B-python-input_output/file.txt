@@ -27,3 +27,6 @@ the reference point is selected by the whence argument. A whence value of 0 meas
 
  The JSON format is commonly used by modern applications to allow for data exchange.
   Many programmers are already familiar with it, which makes it a good choice for interoperability.
+
+   JSON files must be encoded in UTF-8. Use encoding="utf-8" when opening JSON file as a text file for both of reading and writing.
+   
