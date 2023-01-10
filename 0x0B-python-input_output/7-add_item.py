@@ -14,6 +14,6 @@ try:
 except Exception:
     json_list = []
 for item in argv[1:]:
-    json_list.append(item)
+    json_list.extend(item)
 
 save_to_json_file(json_list, file_name)
