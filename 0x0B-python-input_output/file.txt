@@ -29,4 +29,8 @@ the reference point is selected by the whence argument. A whence value of 0 meas
   Many programmers are already familiar with it, which makes it a good choice for interoperability.
 
    JSON files must be encoded in UTF-8. Use encoding="utf-8" when opening JSON file as a text file for both of reading and writing.
-   
+   json.dump(obj, fp, *, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, 
+   indent=None, separators=None, default=None, sort_keys=False, **kw)
+
+   Syntax: 
+   json.dumps(obj, *, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, default=None, sort_keys=False, **kw)
