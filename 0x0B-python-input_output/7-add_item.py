@@ -14,7 +14,7 @@ file_name = "add_item.json"
 
 try:
     json_list = load_from_json_file(file_name)
-except Exception:
+except FileNotFoundError:
     json_list = []
 for item in args[1:]:
     json_list.append(item)
