@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """class module"""
 from models.base import Base
+import json
 
 
 class Rectangle(Base):
@@ -23,7 +24,7 @@ class Rectangle(Base):
         if type(value) != int:
             raise TypeError("width must be an integer")
         if value <= 0:
-            raise ValueError("width must be >= 0")
+            raise ValueError("width must be > 0")
         self.__width = value
 
     @property
@@ -37,9 +38,9 @@ class Rectangle(Base):
         if type(value) != int:
             raise TypeError("height must be an integer")
         if value <= 0:
-            raise ValueError("height must be >= 0")
+            raise ValueError("height must be > 0")
         self.__height = value
-    
+
     @property
     def x(self):
         """return value of x"""
@@ -53,7 +54,7 @@ class Rectangle(Base):
         if value < 0:
             raise ValueError("x must be >= 0")
         self.__x = value
-    
+
     @property
     def y(self):
         """return the value of y"""
@@ -63,7 +64,7 @@ class Rectangle(Base):
     def y(self, value):
         """set value for y if it is an int and greater than 0"""
         if type(value) != int:
-            raise TypeError("ymust be an integer")
+            raise TypeError("y must be an integer")
         if value < 0:
             raise ValueError("y must be >= 0")
         self.__y = value
@@ -73,7 +74,7 @@ class Rectangle(Base):
         return self.__width * self.__height
 
     def display(self):
-        """display # with given width and height 
+        """display # with given width and height
         we don't need control what a given value
         of x and y"""
         if self.__width == 0 and self.__height == 0:
@@ -87,8 +88,12 @@ class Rectangle(Base):
 
     def __str__(self):
         """string overriding"""
-        return "[Rectangle] ({}) {}/{} - {}/{}".format(self.id, self.__x,
-        self.__y, self.width, self.__height)
+        id = self.id
+        x = self.__x
+        y = self.__y
+        w = self.__width
+        h = self.__height
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(id, x, y, w, h)
 
     def update(self, *args, **kwargs):
         """use args and kwargs for passing the
