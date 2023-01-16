@@ -1,0 +1,9 @@
+dump() method can be used for writing to JSON file.
+
+Syntax:
+
+json.dump(dict, file_pointer)
+It takes 2 parameters:
+
+dictionary: name of a dictionary which should be converted to a JSON object.
+file pointer: pointer of the file opened in write or append mode.
