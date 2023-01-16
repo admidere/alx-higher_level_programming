@@ -18,12 +18,12 @@ class Base:
     @classmethod
     def save_to_file(cls, list_objs):
         """save to file using json"""
-        if list_objs is not None or list_objs == []:
+        if list_objs is not None or not list_objs:
             list = []
         list = [i.to_dictionary() for i in list_objs]
         file_name = cls.__name__ + ".json"
         with open(file_name, "w", encoding="utf-8") as fin:
-            fin.write(Base.to_json_string(list))
+            fin.write(cls.to_json_string(list))
 
     @staticmethod
     def to_json_string(list_of_dictionary):
