@@ -1,23 +1,12 @@
-""" 9-main """
-from models.square import Square
+#!/usr/bin/python3
+""" 15-main """
+from models.rectangle import Rectangle
 
 if __name__ == "__main__":
 
-    s1 = Square(5)
-    print(s1)
-    print(s1.area())
-    s1.display()
+    r1 = Rectangle(10, 7, 2, 8)
+    r2 = Rectangle(2, 4)
+    Rectangle.save_to_file([r1, r2])
 
-    print("---")
-
-    s2 = Square(2, 2)
-    print(s2)
-    print(s2.area())
-    s2.display()
-
-    print("---")
-
-    s3 = Square(3, 1, 3)
-    print(s3)
-    print(s3.area())
-    s3.display()
+    with open("Rectangle.json", "r") as file:
+        print(file.read())
