@@ -23,7 +23,7 @@ class Base:
         list = [i.to_dictionary() for i in list_objs]
         file_name = cls.__name__ + ".json"
         with open(file_name, "w", encoding="utf-8") as fin:
-            fin.write(cls.to_json_string(list))
+            fin.write(Base.to_json_string(list))
 
     @staticmethod
     def to_json_string(list_of_dictionary):
