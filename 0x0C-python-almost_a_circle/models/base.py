@@ -22,7 +22,7 @@ class Base:
             list = []
         list = [i.to_dictionary() for i in list_objs]
         file_name = cls.__name__ + ".json"
-        with open(file_name, "w") as fin:
+        with open(file_name, "w", encoding="utf-8") as fin:
             fin.write(cls.to_json_string(list))
 
     @staticmethod
@@ -35,8 +35,8 @@ class Base:
     @staticmethod
     def from_json_string(json_string):
         """from json string"""
-        if json_string is None or json_string == []:
-            return json.loads([])
+        if json_string is None or len(json_string) == 0:
+            return json.loads("[]")
         return json.loads(json_string)
 
     @classmethod
