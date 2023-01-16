@@ -1,20 +1,23 @@
-#!/usr/bin/python3
-""" 0-main """
-from models.base import Base
+""" 9-main """
+from models.square import Square
 
 if __name__ == "__main__":
 
-    b1 = Base()
-    print(b1.id)
+    s1 = Square(5)
+    print(s1)
+    print(s1.area())
+    s1.display()
 
-    b2 = Base()
-    print(b2.id)
+    print("---")
 
-    b3 = Base()
-    print(b3.id)
+    s2 = Square(2, 2)
+    print(s2)
+    print(s2.area())
+    s2.display()
 
-    b4 = Base(12)
-    print(b4.id)
+    print("---")
 
-    b5 = Base()
-    print(b5.id)
+    s3 = Square(3, 1, 3)
+    print(s3)
+    print(s3.area())
+    s3.display()

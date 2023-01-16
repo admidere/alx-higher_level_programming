@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """square module"""
 from models.rectangle import Rectangle
+import json
 
 
 class Square(Rectangle):
@@ -11,6 +12,7 @@ class Square(Rectangle):
         super().__init__(size, size, x, y, id)
 
     def __str__(self):
+        """ return [Square] (<id>) <x>/<y> - <size"""
         id = self.id
         x = super().x
         y = super().y
@@ -29,6 +31,7 @@ class Square(Rectangle):
         super(Square, self.__class__).height.__set__(self, value)
 
     def update(self, *args, **kwargs):
+        """update the value"""
         if args:
             if len(args) > 0:
                 k = 0
