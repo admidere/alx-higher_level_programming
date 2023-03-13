@@ -1,11 +1,10 @@
 #!/usr/bin/node
+const number = Number.parseInt(process.argv[2], 10);
 
-function factorize(num) {
-  if (!num || num < 0 || num == 0) {
-    return (1);
-  } else {
-    return (num * factorize(num - 1));
+function factorial (number) {
+  if (number === 0 || isNaN(number) || number < 0) {
+    return 1;
   }
+  return (number * factorial(number - 1));
 }
-
-console.log(factorize(process.argv[2]));
+console.log(factorial(number));
