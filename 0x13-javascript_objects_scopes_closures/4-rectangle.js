@@ -22,7 +22,7 @@ class Rectangle {
     const temp = this.width;
     this.width = this.height;
     this.height = temp;
-    }
+  }
 
   double () {
     this.height *= 2;
