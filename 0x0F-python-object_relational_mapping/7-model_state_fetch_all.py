@@ -1,17 +1,14 @@
 #!/usr/bin/python3
-"""Fetch state from database
+"""
+    Get the states of database
 """
 import sys
 from model_state import Base, State
 from sqlalchemy import (create_engine)
-from sqlalchemy.orm import sessionmaker
-
 
 if __name__ == "__main__":
     engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
         sys.argv[1], sys.argv[2], sys.argv[3]), pool_pre_ping=True)
-    Base.metadata.create_all(engine)
-    session = sessionmaker(bind=engine)()
-    for state in session.query(State).order_by(State.id).all():
-        print("{}: {}".format(state.id, state.name))
-    session.close()
+    result = engine.execute('SELECT * FROM states ORDER BY states.id ASC')
+    for row in result:
+        print("{}: {}".format(row[0], row[1]))
