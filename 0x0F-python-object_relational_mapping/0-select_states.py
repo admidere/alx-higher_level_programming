@@ -1,21 +1,23 @@
 #!/usr/bin/python3
-"""List states Module"""
+"""
+    Get all states of a data base
+"""
 import MySQLdb
 from sys import argv
 
 
-if __name__ == "__main__":
-    db = MySQLdb.connect(
-            host='localhost',
-            port=3306,
-            user=argv[1],
-            passwd=argv[2],
-            db=argv[3])
+def main():
+    """Only executes when is not imported"""
+    db = MySQLdb.connect(host="localhost",
+                         user=argv[1],
+                         port=3306,
+                         passwd=argv[2],
+                         db=argv[3])
+    c = db.cursor()
+    numrows = c.execute("""SELECT * FROM states ORDER BY states.id ASC""")
+    states = c.fetchall()
+    for idstate in states:
+        print(idstate)
 
-    cursor = db.cursor()
-    cursor.execute("SELECT * FROM states ORDER BY states.id ASC")
-    rows = cursor.fetchall()
-    for row in rows:
-        print(row)
-    cursor.close()
-    db.close()
+if __name__ == "__main__":
+    main()
