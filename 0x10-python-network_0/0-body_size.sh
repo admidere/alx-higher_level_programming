@@ -2,16 +2,13 @@
 # takes in a URL, sends a request to that URL using curl, and
 # displays the size of the response body in bytes
 
-# Check if URL is provided
-if [ $# -eq 0 ]; then
-	  echo "Please provide a URL as an argument"
-	    exit 1
-fi
+#!/bin/bash
 
-url="$1"
+# get URL from command line argument
+url=$1
 
-# Send request using curl and get the size of the response body in bytes
-size=$(curl -s -o /dev/null -w '%{size_download}' "$url")
+# send request to URL and get response body size in bytes
+response_size=$(curl -s -o /dev/null -w '%{size_download}' $url)
 
-# Display the size of the response body in bytes
-echo "$size"
+# display response body size
+echo "$response_size"
