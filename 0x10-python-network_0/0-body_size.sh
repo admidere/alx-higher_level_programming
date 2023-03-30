@@ -1,5 +1,12 @@
 #!/bin/bash
-# takes in a URL, sends a request to that URL using curl, and
-# displays the size of the response body in bytes
+# Check if a URL was provided as an argument
+if [ -z "$1" ]; then
+	  echo "Usage: $0 <url>"
+	    exit 1
+fi
 
-curl -Is -L "$1" | grep -w 'Content-Length' | cut -d ' ' -f2
+# Send a request to the URL and get the size of the body
+size=$(curl -sI "$1" | awk '/Content-Length/ { print $2 }')
+
+# Display the size of the body in bytes
+echo "${size}"
