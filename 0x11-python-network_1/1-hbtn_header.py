@@ -9,6 +9,6 @@ url = sys.argv[1]
 # Send a request to the URL and get the response
 with urllib.request.urlopen(url) as response:
     # Get the value of the X-Request-Id header
-    request_id = response.headers.get('X-Request-Id')
+    X_request_id = response.headers.get('X-Request-Id')
     # Display the value of the X-Request-Id header
-    print(request_id)
+    print(X_request_id)
