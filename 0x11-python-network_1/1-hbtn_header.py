@@ -11,4 +11,4 @@ with urllib.request.urlopen(url) as response:
     # Get the value of the X-Request-Id header
     X_request_id = response.headers.get('X-Request-Id')
     # Display the value of the X-Request-Id header
-    print('X-Request-Id:', X_request_id)
+print(X_request_id)
