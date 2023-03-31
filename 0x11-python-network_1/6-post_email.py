@@ -10,12 +10,12 @@ import sys
 
 
 if __name__ == '__main__':
-# Get URL and email address from command line arguments
-url = sys.argv[1]
-email = sys.argv[2]
+    # Get URL and email address from command line arguments
+    url = sys.argv[1]
+    email = sys.argv[2]
 
-# Send POST request with email as parameter
-response = requests.post(url, data={'email': email})
+    # Send POST request with email as parameter
+    response = requests.post(url, data={'email': email})
 
-# Display response body
-print(response.text)
+    # Display response body
+    print(response.text)
