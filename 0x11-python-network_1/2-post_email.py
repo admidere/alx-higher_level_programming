@@ -11,14 +11,12 @@ import sys
 
 
 if __name__ == '__main__':
-    # Get the URL and email from command line arguments
     url = sys.argv[1]
     email = sys.argv[2]
 
-    # Encode the email parameter
-    params = urllib.parse.urlencode({'email': email}).encode('utf-8')
+    data = urllib.parse.urlencode({'email': email})
+    data = data.encode('utf-8')
 
-    # Send the POST request
-    with urllib.request.urlopen(url, data=params) as response:
-        # Decode and print the response body
-        print(response.read().decode('utf-8'))
+    with urllib.request.urlopen(url, data) as response:
+        html = response.read()
+    print(html.decode('utf-8'))
