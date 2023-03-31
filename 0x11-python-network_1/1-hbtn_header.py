@@ -2,10 +2,13 @@
 import urllib.request
 import sys
 """Response header value"""
+
+# Get the URL from the command-line argument
 url = sys.argv[1]
 
-req = urllib.request.Request(url)
-
-with urllib.request.urlopen(req) as response:
-    x_request_id = response.headers.get('X-Request-Id')
-    print(x_request_id)
+# Send a request to the URL and get the response
+with urllib.request.urlopen(url) as response:
+    # Get the value of the X-Request-Id header
+    request_id = response.headers.get('X-Request-Id')
+    # Display the value of the X-Request-Id header
+    print(request_id)
