@@ -1,12 +1,10 @@
 #!/usr/bin/python3
-"""Response header value"""
+"""Displays the value of the X-Request-Id variable."""
 import urllib.request
 import sys
 
-# Get the URL from the command-line argument
-url = sys.argv[1]
-
 if __name__ == '__main__':
+    url = sys.argv[1]
     with urllib.request.urlopen(url) as response:
-        X_request_id = response.headers.get('X-Request-Id')
-    print(X_request_id)
+        requested_id = response.getheader('X-Request-Id')
+    print(requested_id)
