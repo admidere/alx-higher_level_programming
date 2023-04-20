@@ -16,7 +16,8 @@ if __name__ == '__main__':
 
     # Engine creation
     engine = create_engine('mysql+mysqldb://{}:{}@{}:{}/{}'
-                           .format(mysql_username, mysql_password, host, port, database_name),
+                           .format(mysql_username, mysql_password,
+                                   host, port, database_name),
                            pool_pre_ping=True)
 
     # Creates all tables stored in this metadata.
