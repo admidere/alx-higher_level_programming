@@ -18,7 +18,7 @@ if __name__ == '__main__':
                            user=mysql_username,
                            passwd=mysql_password,
                            db=database_name)
-    
+
     # Prepare a parameterized query with a placeholder for the user input
     query = "SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC"
     # Execute the parameterized query with the user input as a tuple
