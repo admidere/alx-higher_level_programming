@@ -11,7 +11,7 @@ if __name__ == '__main__':
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
-    searched_name = sys.argv[4]
+    state_name_searched = sys.argv[4]
 
     # Connect to the MySQL server running on localhost at port 3306
     conn = MySQLdb.connect(host='localhost', port=3306, user=username,
@@ -21,7 +21,7 @@ if __name__ == '__main__':
     # Prepare a parameterized query with a placeholder for the user input
     query = "SELECT * FROM states WHERE BINARY name LIKE %s ORDER BY id ASC"
     # Execute the parameterized query with the user input as a tuple
-    cursor.execute(query, (searched_name + '%',))
+    cursor.execute(query, (state_name_searched + '%',))
 
     # Fetch all the rows returned by the query
     rows = cursor.fetchall()
