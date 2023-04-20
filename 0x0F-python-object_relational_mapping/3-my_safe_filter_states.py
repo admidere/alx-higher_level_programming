@@ -8,14 +8,16 @@ import sys
 if __name__ == '__main__':
     # Get the MySQL username, password, and database name
     # from command line arguments
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
+    mysql_username = sys.argv[1]
+    mysql_password = sys.argv[2]
+    database_name = sys.argv[3]
     state_name_searched = sys.argv[4]
 
     # Connect to the MySQL server running on localhost at port 3306
-    conn = MySQLdb.connect(host='localhost', port=3306, user=username,
-                           passwd=password, db=database)
+    conn = MySQLdb.connect(host='localhost', port=3306,
+                           user=mysql_username,
+                           passwd=mysql_password,
+                           db=database_name)
     
     # Prepare a parameterized query with a placeholder for the user input
     query = "SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC"
