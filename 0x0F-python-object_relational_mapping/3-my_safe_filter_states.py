@@ -1,6 +1,7 @@
 #!/usr/bin/python3
-"""script that lists all states with a name
-starting with N (upper N) from the database hbtn_0e_0_usa"""
+""" script that takes in arguments and displays all values in the states 
+table of hbtn_0e_0_usa where name matches the argument.
+But this time, write one that is safe from MySQL injections!"""
 import MySQLdb
 import sys
 
@@ -17,7 +18,7 @@ if __name__ == '__main__':
                            passwd=password, db=database)
 
     # Prepare a parameterized query with a placeholder for the user input
-    query = "SELECT * FROM states WHERE BINARY name LIKE %s ORDER BY id ASC"
+    query = "SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC"
 
     # Execute the parameterized query with the user input as a tuple
     cursor = conn.cursor()
