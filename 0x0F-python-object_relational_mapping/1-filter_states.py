@@ -5,15 +5,26 @@ import MySQLdb
 import sys
 
 if __name__ == '__main__':
+    # Get the MySQL username, password, and database name from command line arguments
     username = sys.argv[1]
     password = sys.argv[2]
-    db_name = sys.argv[3]
-    db = MySQLdb.connect(host="localhost", port=3306, user=username,
-                         passwd=password, db=db_name)
-    cur = db.cursor()
-    cur.execute("SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC")
-    rows = cur.fetchall()
+    database = sys.argv[3]
+
+    # Connect to the MySQL server running on localhost at port 3306
+    conn = MySQLdb.connect(host='localhost', port=3306, user=username, passwd=password, db=database)
+
+    # Execute a SELECT query to retrieve all states with a name starting with 'N'
+    query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC;"
+    cursor = conn.cursor()
+    cursor.execute(query)
+
+    # Fetch all the rows returned by the query
+    rows = cursor.fetchall()
+
+    # Print the results
     for row in rows:
         print(row)
-    cur.close()
-    db.close()
+
+    # Close the cursor and the connection
+    cursor.close()
+    conn.close()
