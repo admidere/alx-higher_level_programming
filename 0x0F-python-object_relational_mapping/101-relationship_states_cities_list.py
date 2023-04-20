@@ -14,7 +14,8 @@ if __name__ == "__main__":
     mysql_password = sys.argv[2]
     database_name = sys.argv[3]
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.
-                           format(mysql_username, mysql_password, database_name),
+                           format(mysql_username, mysql_password,
+                                  database_name),
                            pool_pre_ping=True)
 
     # Create a session
