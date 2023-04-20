@@ -3,7 +3,6 @@
 Script that lists all cities from the database hbtn_0e_4_usa
 """
 
-#!/usr/bin/python3
 import MySQLdb
 import sys
 
@@ -24,8 +23,11 @@ if __name__ == "__main__":
     # Create a cursor object
     cursor = db.cursor()
 
-    # Execute the SQL query to fetch all cities
-    cursor.execute("SELECT * FROM cities ORDER BY id ASC")
+    # Execute the SQL query to fetch all cities with their state names
+    cursor.execute("SELECT cities.id, cities.name, states.name \
+                    FROM cities \
+                    INNER JOIN states ON cities.state_id = states.id \
+                    ORDER BY cities.id ASC")
 
     # Fetch all the rows using fetchall() method
     rows = cursor.fetchall()
