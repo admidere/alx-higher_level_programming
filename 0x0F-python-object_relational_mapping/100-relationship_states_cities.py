@@ -14,7 +14,7 @@ if __name__ == '__main__':
 
     engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'
                            .format(mysql_username, mysql_password,
-                                    database_name))
+                                   database_name))
 
     Base.metadata.create_all(engine)
 
