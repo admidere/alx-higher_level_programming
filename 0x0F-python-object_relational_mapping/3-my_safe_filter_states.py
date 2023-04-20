@@ -19,7 +19,7 @@ if __name__ == '__main__':
     
     cursor = conn.cursor()
     # Prepare a parameterized query with a placeholder for the user input
-    query = "SELECT * FROM states WHERE name LIKE %s ORDER BY id ASC"
+    query = "SELECT * FROM states WHERE BINARY name LIKE %s ORDER BY id ASC"
     # Execute the parameterized query with the user input as a tuple
     cursor.execute(query, (searched_name + '%',))
 
