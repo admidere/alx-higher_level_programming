@@ -26,11 +26,8 @@ if __name__ == '__main__':
     session = Session()
 
     # Querying all City objects sorted by id
-    cities = session.query(City).order_by(City.id)
-
-    # Printing City objects by state
-    for city in cities:
-        print("{}: ({}) {}".format(city.state.name, city.id, city.name))
-
-    # Closing the session
+    for city, state in session.query(City, State) \
+                              .filter(City.state_id == State.id) \
+                              .order_by(City.id.asc()):
+        print('{}: ({}) {}'.format(state.name, city.id, city.name))
     session.close()
