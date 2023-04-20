@@ -16,9 +16,9 @@ if __name__ == '__main__':
                            passwd=password, db=database)
 
     # Execute a SELECT queryto retrieve all states with a namestarting with 'N'
-    query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC;"
     cursor = conn.cursor()
-    cursor.execute(query)
+    cursor.execute("SELECT * FROM states WHERE name LIKE 'N%' AND \
+                 BINARY LEFT(name, 1) = 'N' ORDER BY id ASC")
 
     # Fetch all the rows returned by the query
     rows = cursor.fetchall()
