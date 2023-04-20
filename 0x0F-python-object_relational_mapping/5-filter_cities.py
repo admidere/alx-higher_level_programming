@@ -1,41 +1,35 @@
 #!/usr/bin/python3
+""" takes in the name of a state as an argument and lists all
+    cities of that state, using the database hbtn_0e_4_usa.
+"""
+
 import MySQLdb
 import sys
 
-if __name__ == "__main__":
-    username = sys.argv[1]
-    password = sys.argv[2]
-    database = sys.argv[3]
+if __name__ == '__main__':
+    """ The code should not be executed when imported"""
+
+    mysql_username = sys.argv[1]
+    mysql_passwd = sys.argv[2]
+    db_name = sys.argv[3]
     state_name = sys.argv[4]
 
-    # Connect to the database
-    db = MySQLdb.connect(
-        host="localhost",
-        port=3306,
-        user=username,
-        passwd=password,
-        db=database
-    )
+    db = MySQLdb.connect(host='localhost',
+                         port=3306,
+                         user=mysql_username,
+                         passwd=mysql_passwd,
+                         db=db_name)
+    cur = db.cursor()
 
-    # Create a cursor object
-    cursor = db.cursor()
+    cur.execute("SELECT GROUP_CONCAT(cities.name SEPARATOR ', ') from states, \
+                 cities WHERE states.id = cities.state_id AND states.name = \
+                 '{}' ORDER BY cities.id ASC".format(state_name))
 
-    # Execute the SQL query to fetch all cities in the specified state
-    query = "SELECT cities.id, cities.name, states.name \
-             FROM cities \
-             INNER JOIN states ON cities.state_id = states.id \
-             WHERE states.name = %s \
-             ORDER BY cities.id ASC"
+    result = cur.fetchone()[0]  # Extracting the first element of the tuple
+    if result is not None:
+        print(result)
+    else:
+        print()
 
-    cursor.execute(query, (state_name,))
-
-    # Fetch all the rows using fetchall() method
-    rows = cursor.fetchall()
-
-    # Print the data
-    for row in rows:
-        print(row)
-
-    # Close the cursor and database connection
-    cursor.close()
+    cur.close()
     db.close()
