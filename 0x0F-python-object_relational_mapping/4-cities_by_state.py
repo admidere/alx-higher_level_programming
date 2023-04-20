@@ -3,32 +3,37 @@
 Script that lists all cities from the database hbtn_0e_4_usa
 """
 
+#!/usr/bin/python3
 import MySQLdb
 import sys
 
-if __name__ == '__main__':
-    # Get the MySQL username, password, and database name
-    # from command line arguments
+if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
 
-    # Connect to the MySQL server running on localhost at port 3306
-    conn = MySQLdb.connect(host='localhost', port=3306, user=username,
-                           passwd=password, db=database)
+    # Connect to the database
+    db = MySQLdb.connect(
+        host="localhost",
+        port=3306,
+        user=username,
+        passwd=password,
+        db=database
+    )
 
-    # Prepare a query to retrieve all cities sorted by id in ascending order
-    query = "SELECT * FROM cities ORDER BY id ASC"
+    # Create a cursor object
+    cursor = db.cursor()
 
-    # Execute the query and fetch all the rows returned by the query
-    cursor = conn.cursor()
-    cursor.execute(query)
+    # Execute the SQL query to fetch all cities
+    cursor.execute("SELECT * FROM cities ORDER BY id ASC")
+
+    # Fetch all the rows using fetchall() method
     rows = cursor.fetchall()
 
-    # Print the results
+    # Print the data
     for row in rows:
         print(row)
 
-    # Close the cursor and the connection
+    # Close the cursor and database connection
     cursor.close()
-    conn.close()
+    db.close()
