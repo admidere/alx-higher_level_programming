@@ -5,25 +5,19 @@ import requests
 import sys
 
 if __name__ == '__main__':
-    # The first argument is the GitHub username, the second argument is the personal access token
+    # Set the GitHub API endpoint
+    endpoint = "https://api.github.com/user"
+
+    # Get the username and password from the command-line arguments
     username = sys.argv[1]
-    token = sys.argv[2]
+    password = sys.argv[2]
 
-    # Define the URL for the API request
-    url = f"https://api.github.com/user"
+    # Send a GET request to the endpoint with the Basic Authentication header
+    response = requests.get(endpoint, auth=(username, password))
 
-    # Define the headers for the API request
-    headers = {
-        "Accept": "application/vnd.github.v3+json",
-        "Authorization": f"Basic {username}:{token}"
-    }
-
-    # Send the API request
-    response = requests.get(url, headers=headers)
-
-    # If the request was successful, print the user ID
+    # If the response is successful, print the user id
     if response.status_code == 200:
         user_id = response.json()["id"]
-        print("{}".format(user_id)
+        print("{}".format(user_id))
     else:
         print("None")
