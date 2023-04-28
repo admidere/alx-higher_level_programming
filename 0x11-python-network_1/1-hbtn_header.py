@@ -2,14 +2,16 @@
 """Python script that takes in a URL, sends a request to the URL and
 displays the value of the X-Request-Id variable found in the
 header of the response."""
-from sys import argv
 import urllib.request
+import sys
 
-# get a url from CLA
-url = argv[1]
+# Get URL from command line argument
+url = sys.argv[1]
 
-# use with statment for open request url and get response the header id
+# Send request to URL and get response
 with urllib.request.urlopen(url) as response:
-    # get the value of requested id and store at id variable
-    id = response.headers.get('X-Request-Id')
-    print(id)
+    # Get the value of the X-Request-Id variable from the response header
+    x_request_id = response.headers.get('X-Request-Id')
+    
+    # Display the value of the X-Request-Id variable
+    print(f"The X-Request-Id value for {url} is: {x_request_id}")
