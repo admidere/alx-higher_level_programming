@@ -21,6 +21,6 @@ if __name__ = '__main__':
         for commit in commits:
             sha = commit["sha"]
             author_name = commit["commit"]["author"]["name"]
-            print(f"{sha}: {author_name}")
+            print("{}".format(author_name))
     else:
         print("Error")
