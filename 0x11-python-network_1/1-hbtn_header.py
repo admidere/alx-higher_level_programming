@@ -12,4 +12,4 @@ url = argv[1]
 with urllib.request.urlopen(url) as response:
     # get the value of requested id and store at id variable
     id = response.headers.get('X-Request-Id')
-print(id)
+    print(id)
