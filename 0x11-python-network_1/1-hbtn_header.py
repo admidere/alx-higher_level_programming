@@ -12,6 +12,6 @@ url = sys.argv[1]
 with urllib.request.urlopen(url) as response:
     # Get the value of the X-Request-Id variable from the response header
     x_request_id = response.headers.get('X-Request-Id')
-    
+
     # Display the value of the X-Request-Id variable
-    print(f"The X-Request-Id value for {url} is: {x_request_id}")
+    print(x_request_id)
