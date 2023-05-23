@@ -14,6 +14,9 @@ request.get(apiUrl, (error, response, body) => {
       }
       return acc;
     }, {});
-    console.log(JSON.stringify(counts));
+
+    Object.keys(counts).forEach(userId => {
+      console.log(`'${userId}': ${counts[userId]}`);
+    });
   }
 });
