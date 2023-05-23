@@ -2,16 +2,17 @@
 
 const fs = require('fs');
 
-function writeContent (filePath, content) {
-  fs.writeFile(filePath, content, 'utf-8', (error) => {
-    if (error) {
-      console.error(error);
+function writeToFile(filePath, content) {
+  fs.writeFile(filePath, content, 'utf-8', (err) => {
+    if (err) {
+      console.error(err);
     } else {
-      console.log('secussefuly added content to file: $(filePath)');
+      console.log(`Successfully wrote to file: ${filePath}`);
     }
   });
 }
 
+// Usage: node script.js <file_path> <content>
 const filePath = process.argv[2];
 const content = process.argv[3];
-writeContent(filePath, content);
+writeToFile(filePath, content);
