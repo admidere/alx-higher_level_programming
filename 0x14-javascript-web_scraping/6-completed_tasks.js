@@ -1,22 +1,33 @@
 #!/usr/bin/node
 
 const request = require('request');
-const apiUrl = 'https://jsonplaceholder.typicode.com/todos';
 
-request.get(apiUrl, (error, response, body) => {
-  if (error) {
-    console.error(error);
-  } else {
-    const todos = JSON.parse(body);
-    const counts = todos.reduce((acc, todo) => {
-      if (todo.completed) {
-        acc[todo.userId] = (acc[todo.userId] || 0) + 1;
-      }
-      return acc;
-    }, {});
+function countCompletedTasks (apiUrl) {
+  request.get(apiUrl, (error, response, body) => {
+    if (error) {
+      console.error(error);
+    } else if (response.statusCode !== 200) {
+      console.error(`Failed to fetch task data. Status code: ${response.statusCode}`);
+    } else {
+      const tasks = JSON.parse(body);
+      const completedTasksByUser = {};
 
-    Object.keys(counts).forEach(userId => {
-      console.log(`'${userId}': ${counts[userId]}`);
-    });
-  }
-});
+      tasks.forEach((task) => {
+        if (task.completed) {
+          const userId = task.userId;
+          if (completedTasksByUser[userId]) {
+            completedTasksByUser[userId]++;
+          } else {
+            completedTasksByUser[userId] = 1;
+          }
+        }
+      });
+
+      console.log(completedTasksByUser);
+    }
+  });
+}
+
+// Usage: node script.js <API_URL>
+const apiUrl = process.argv[2];
+countCompletedTasks(apiUrl);
